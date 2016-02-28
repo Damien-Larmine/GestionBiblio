@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 25 janv. 2016 12:06:47 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="bibliotheque" name="entite.Utilisateur" optimistic-lock="version" table="utilisateur">
+    <id name="idUtilisateur" type="int">
+      <column name="IdUtilisateur"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="nomUtilisateur" type="string">
+      <column length="45" name="NomUtilisateur" not-null="true"/>
+    </property>
+    <property name="prenomUtilisateur" type="string">
+      <column length="45" name="PrenomUtilisateur" not-null="true"/>
+    </property>
+    <property name="sexeUtilisateur" type="string">
+      <column length="2" name="SexeUtilisateur" not-null="true"/>
+    </property>
+    <property name="dateNaissance" type="date">
+      <column length="10" name="DateNaissance" not-null="true"/>
+    </property>
+    <property name="adresseUtlisateur" type="string">
+      <column length="65535" name="AdresseUtlisateur" not-null="true"/>
+    </property>
+    <property name="telephoneUtilisateur" type="string">
+      <column length="10" name="TelephoneUtilisateur" not-null="true"/>
+    </property>
+    <property name="mailUtilisateur" type="string">
+      <column length="45" name="MailUtilisateur" not-null="true"/>
+    </property>
+    <property name="bibiliothecaire" type="boolean">
+      <column name="Bibiliothecaire" not-null="true"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="emprunts" table="emprunt">
+      <key>
+        <column name="IdUtilisateur" not-null="true" unique="true"/>
+      </key>
+      <one-to-many class="entite.Emprunt"/>
+    </set>
+  </class>
+</hibernate-mapping>
