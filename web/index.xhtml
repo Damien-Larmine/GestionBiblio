@@ -13,24 +13,24 @@ and open the template in the editor.
     </head>
     <body>
         <h1>Tous les livres</h1>
-        <h:dataTable value="${livreBean.helloWorld()}" var="item" cellpadding="2" rules="all">
+        <h:dataTable value="#{livreBean.listeLivres}" var="item" cellpadding="2" rules="all">
                     <h:column>
                         <f:facet name="header">
                             <h:outputText value="Titre"/>
                         </f:facet>
-                        <h:outputText value="${item.titreLivre}"/>
+                        <h:outputText value="#{item.titreLivre}"/>
                     </h:column>
                     <h:column>
                         <f:facet name="header">
                             <h:outputText value="Auteur"/>
                         </f:facet>
-                        <h:outputText value="${item.auteurLivre}"/>
+                        <h:outputText value="#{item.auteurLivre}"/>
                     </h:column>
                     <h:column>
                         <f:facet name="header">
                             <h:outputText value="Nombre de Pages"/>
                         </f:facet>
-                        <h:outputText value="${item.nbPages}"/>
+                        <h:outputText value="#{item.nbPages}"/>
                     </h:column>
                 </h:dataTable>
                 <br/>

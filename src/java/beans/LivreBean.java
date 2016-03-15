@@ -7,9 +7,9 @@ package beans;
 
 import entite.Livre;
 import java.util.List;
-import javax.annotation.ManagedBean;
-import javax.enterprise.context.SessionScoped;
 import business.ILivreMetier;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -27,8 +27,6 @@ public class LivreBean implements java.io.Serializable{
 
     public LivreBean() {
         super();
-        ApplicationContext appContext = new ClassPathXmlApplicationContext("applicationContext.xml");
-        livreMetier = (ILivreMetier)appContext.getBean("livreMetier");
     }
 
     public String getLivreId() {
@@ -45,6 +43,8 @@ public class LivreBean implements java.io.Serializable{
     }
 
     public List getListeLivres() {
+        ApplicationContext appContext = new ClassPathXmlApplicationContext("applicationContext.xml");
+        livreMetier = (ILivreMetier)appContext.getBean("livreMetier");
         if (listeLivres == null) {
            listeLivres = livreMetier.findAll(); 
         }
